@@ -1,0 +1,3 @@
+default=thf.vcf,UG.vqsr.snpEff.vcf,seurat.snpEff.vcf,allStats.txt,trn.vcf,seg.vcf,cna.tsv,cna.seg,UG.vcf,alleleCount.vcf,deseq.vcf,cuffdiff.vcf,HC.snpEff.vcf,HC_All.vcf
+SU2C=thf.vcf,UG.vqsr.snpEff.vcf,allStats.txt,trn.vcf,seg.vcf,cna.tsv,UG.vcf,alleleCount.vcf,cuffdiff.vcf,HC.snpEff.vcf,HC_All.snpEff.vcf
+
