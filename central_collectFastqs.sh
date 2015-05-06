@@ -14,6 +14,19 @@ do #for all of the files in the dropbox
 		echo "Exiting..."
 		exit
 	fi
+	pedFile=${fqList/FastqList.csv/PEDvalues.tsv}
+        if [ ! -e $pedFile ] ; then
+                echo "$pedFile file doesn't exist"
+                echo "This must not be a family study"
+	else
+		echo "$pedFile does exist"
+        	echo "Must be a family study"
+		dos2unix $pedFile
+		CA="/scratch/mrussell/centralPipe/familyConversionArea"
+		cat $pedFile | tr -d '\013' > $pedFile.tmp
+        	tr '\r' '\n' < $pedFile.tmp | sed 's/"//g' > $pedFile
+        	rm $pedFile.tmp
+	fi
 	echo "### fqList file is $fqList"
 	echo "### runPar file is $runPar"
 	if [ -e $runPar.inUse ] ; then
@@ -95,6 +108,14 @@ do #for all of the files in the dropbox
 		#done, so moving them out of dropbox
 		mv $runPar $collectFQdbUsed
 		mv $fqList $collectFQdbUsed
+		if [ ! -e $pedFile ] ; then
+      	        	echo "$pedFile file doesn't exist"
+                	echo "This must not be a family study"
+        	else
+                	cp $pedFile ${CA}/
+                	mv $pedFile $collectFQdbUsed
+        	fi
+
 	else
 		echo "### A copy failed or file wasnt found."
 		echo "### Preparing mail to be sent..."	
@@ -107,6 +128,7 @@ do #for all of the files in the dropbox
 		rm ~/mailtmp-$$.txt
 		mv $runPar $collectFQdbFail
 		mv $fqList $collectFQdbFail
+		mv $pedFile $collectFQdbFail
 		#email people to tell them their fastqs are missing
 	fi
 	rm $runPar.inUse
