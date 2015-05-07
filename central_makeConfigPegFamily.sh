@@ -1,5 +1,6 @@
 DB="/scratch/mrussell/centralPipe/dropBox"
-CA="/scratch/mrussell/centralPipe/conversionArea"
+FDB="/scratch/mrussell/centralPipe/famDropBox"
+CA="/scratch/mrussell/centralPipe/familyConversionArea"
 CAU="/scratch/mrussell/centralPipe/conversionAreaUsed"
 time=`date +%d-%m-%Y-%H-%M`
 echo "Starting $0 at $time"
@@ -77,6 +78,9 @@ do #for all of the files in conversion area
 		#genNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $5}' | head -1`
 		genNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $5}' | sort | uniq | xargs`
 		echo "### gen nor sample name: $genNorSampleName"
+                genJirSetName="${PROJECT}_Genome_DNAFAMI"
+                genJirSet=`echo "${genNorSampleList// /,};${genJirSetName}"`
+                echo "DNAFAMI=$genJirSet" >> ${CA}/$projName.config		
 	fi
 
 	#genome tumor  section
@@ -105,6 +109,10 @@ do #for all of the files in conversion area
 		#exoNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $5}' | head -1`
 		exoNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $5}' | sort | uniq | xargs`
 		#echo "### exo nor sample name: $exoNorSampleName"
+                exoJirSetName="${PROJECT}_Exome_DNAFAMI"
+                exoJirSet=`echo "${exoNorSampleList// /,};${exoJirSetName}"`
+                echo "DNAFAMI=$exoJirSet" >> ${CA}/$projName.config
+
 	fi
 
 	#exome tumor  section
@@ -180,7 +188,7 @@ do #for all of the files in conversion area
 		#rnaTumSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Tumor" {print $5}' | head -1`
 		#echo "TRIPLET4ALLELECOUNT=$exoNorSampleName,$exoTumSampleName,$rnaTumSampleName" >> ${CA}/$projName.config
 	fi
-	
+		
 	echo "=START" >> ${CA}/$projName.config
 	for eachSample in `cat $fqList | awk 'BEGIN{FS=","} {print $5}' | sort | uniq`
 	do
@@ -196,9 +204,12 @@ do #for all of the files in conversion area
 		done
 	done
 	echo "=END" >> ${CA}/$projName.config
-	mv ${CA}/$projName.config ${DB}/
+	mv ${CA}/$projName.config ${FDB}/
+	cp $pedFile $projName.ped
+	mv $projName.ped ${FDB}/
 	mv $fqList ${CAU}
 	mv $runPar ${CAU}
+	mv $pedFile ${CAU}
 	rm $runPar.inUse
 done
 time=`date +%d-%m-%Y-%H-%M`
