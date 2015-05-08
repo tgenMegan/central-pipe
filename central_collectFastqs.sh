@@ -14,6 +14,10 @@ do #for all of the files in the dropbox
 		echo "Exiting..."
 		exit
 	fi
+	#PIPELINE=`cat $runPar | cut -d, -f14`
+	#if [[ $PIPELINE == Pegasus* ]] ; then
+	#	CA="/scratch/mrussell/centralPipe/conversionAreaPegasus"
+	#fi
 	pedFile=${fqList/FastqList.csv/PEDvalues.tsv}
         if [ ! -e $pedFile ] ; then
                 echo "$pedFile file doesn't exist"
@@ -119,12 +123,12 @@ do #for all of the files in the dropbox
 	else
 		echo "### A copy failed or file wasnt found."
 		echo "### Preparing mail to be sent..."	
-		echo "### Pecan collect fastq script ran into problems. Either file doesn't exist on Isilon or copy process failed" > ~/mailtmp-$$.txt
+		echo "### Central collect fastq script ran into problems. Either file doesn't exist on Isilon or copy process failed" > ~/mailtmp-$$.txt
 		echo "" >> ~/mailtmp-$$.txt
 		cat $fqList >> ~/mailtmp-$$.txt
 		echo "" >> ~/mailtmp-$$.txt
-		mail -s "medusa pipeline: Collect fastq script failed" "mrussell@tgen.org" < ~/mailtmp-$$.txt
-		mail -s "medusa pipeline: Collect fastq script failed" "$email" < ~/mailtmp-$$.txt
+		mail -s "central pipeline: Collect fastq script failed" "mrussell@tgen.org" < ~/mailtmp-$$.txt
+		mail -s "central pipeline: Collect fastq script failed" "$email" < ~/mailtmp-$$.txt
 		rm ~/mailtmp-$$.txt
 		mv $runPar $collectFQdbFail
 		mv $fqList $collectFQdbFail

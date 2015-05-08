@@ -33,6 +33,8 @@ echo "### End of prepDir checking out dbGood..."
 
 echo "### Sending makeConfig into conversion area..."
 
+#$scriptsHome/central_makeConfigPegasus.sh >> $logs/central_makeConfigLOG.txt 2>&1
+
 for fqList in `find ${CA} -name *FastqList.csv`
 do #for all of the files in conversion area
 	runPar=${fqList/FastqList.csv/RunParameters.csv}

@@ -16,8 +16,7 @@
 time=`date +%d-%m-%Y-%H-%M`
 echo "Starting $0 at $time"
 echo ""
-dropDir="/scratch/mrussell/centralPipe/dropBox/"
-famDropDir="/scratch/mrussell/centralPipe/famDropBox/"
+dropDir="/scratch/mrussell/centralPipe/famDropBox/"
 dbGood="/scratch/mrussell/centralPipe/dbGood/"
 dbFail="/scratch/mrussell/centralPipe/dbFail/"
 dbUsed="/scratch/mrussell/centralPipe/dbUsed/"
@@ -44,7 +43,17 @@ do
 		chmod 777 $configFile
 		continue
 	fi
-
+	
+	###This is the family drop box there should be a PED file
+	pedFile=${configFile/config/ped}
+	if [ -e $pedFile ] ; then
+		echo "###PED file found $pedFile"
+		
+	else
+		echo "###PED file not found $pedFile"
+		echo "###PED file not found $pedFile" >> $conflicts/$configName.configErrors
+		validateFails=1		
+	fi
 	echo "### Checking fields in config file..."
 	configName=`basename $configFile`
 
@@ -467,6 +476,7 @@ do
 		echo "### Config file $configName did not validate for one or more of the reasons above!!!"	
 		echo "### Config file $configName did not validate for one or more of the reasons above!!!" >> $conflicts/$configName.configErrors
 		mv $configFile $dbFail	
+		mv $pedFile $dbFail
 		#if [ ! -e $conflicts/$configName.configErrorSent ] ; then 
 			echo "### Error email now sending to $email."
 			#echo "There were errors in your config file: $configName. You should correct these errors." | mail -s "central pipeline: errors in config file" mrussell@tgen.org $email
@@ -480,6 +490,7 @@ do
 		echo "### Config good email now sending to $email."
 		echo "Your config file $configName has validated, and the pipeline will now start. Much success!" | mail -s "central pipeline: config file validated $configName" mrussell@tgen.org $email
 		mv $configFile $dbGood
+		mv $pedFile $dbGood
 	fi
 	echo "### Done with config file: $configFile"
 	echo ""

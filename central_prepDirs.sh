@@ -37,6 +37,8 @@ do
 	proj=`cat $configFile | grep "^PROJECT=" | cut -d= -f2 | head -1 | tr -d [:space:]`
 	pipeline=`cat $configFile | grep "^PIPELINE=" | cut -d= -f2 | head -1 | tr -d [:space:]`
 	projDir=$targetTopDir/$proj$timeExt
+	pedFile=${configFile/config/ped}
+
 	echo "### Making project directory $projDir."
 	mkdir -p $projDir
 	mkdir -p $projDir/oeFiles
@@ -44,7 +46,14 @@ do
 
 	echo "### Copying fonfig file to $projDir"
 	cp $configFile $projDir/$proj.config
-
+	
+        if [ -e $pedFile ] ; then
+                echo "###PED file found $pedFile"
+        	cp $pedFile $projDir/$proj.ped 
+		mv $pedFile $dbUsed
+	else
+                echo "###PED file not found for this project"
+        fi
 	### create dir with kit name, sample name
 	skipLines=1
 	count=0

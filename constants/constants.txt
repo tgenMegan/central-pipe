@@ -1223,7 +1223,7 @@
 @@jk001@@DNAALIGNER=bwamem
 @@jk001@@RNAALIGNER=star
 @@jk001@@FUSIONDETECT=tophatfusion
-@@jk001@@INDELREALIGN=no
+@@jk001@@INDELREALIGN=yes
 @@jk001@@RECALIBRATE=yes
 @@jk001@@ALLELECOUNT=yes
 @@jk001@@CIRCOS=yes
@@ -1415,14 +1415,15 @@
 @@tgen06@@CUFFQUANTPATH=/home/tgenref/pecan/bin/cufflinks-2.2.1.Linux_x86_64
 @@tgen06@@DESEQ2PATH=/home/tgenref/pecan/bin
 @@tgen06@@DESEQPATH=/home/tgenref/pipeline_v0.4/scripts
+@@tgen06@@DENOVOGEAR=/packages/denovogear/0.5.4/bin
 @@tgen06@@FASTQCPATH=/home/tgenref/pipeline_v0.4/bin/FastQC
 @@tgen06@@FREEBAYESPATH=/home/tgenref/pecan/bin/freebayes/bin
 @@tgen06@@GATKPATH=/home/tgenref/pecan/bin/GATK3.3.0
 @@tgen06@@MUTECTPATH=/home/tgenref/pipeline_v0.4/bin/mutect
 @@tgen06@@SUMSTATSPATH=/home/tgenref/pecan/bin/summaryStats
-@@tgen06@@PICARDPATH=/home/tgenref/pipeline_v0.4/bin/picard-tools-1.111
+@@tgen06@@PICARDPATH=/packages/picard-tools/1.128
 @@tgen06@@PROCESSCDLISTPATH=/home/tgenref/pipeline_v0.3/bin
-@@tgen06@@SAMTOOLSPATH=/home/tgenref/pipeline_v0.4/bin/samtools-0.1.19
+@@tgen06@@SAMTOOLSPATH=/packages/samtools/1.2
 @@tgen06@@STARPATH=/home/tgenref/pecan/bin/STAR-STAR_2.4.0k/bin/Linux_x86_64
 @@tgen06@@SEURATPATH=/home/tgenref/pipeline_v0.4/bin
 @@tgen06@@SNPEFFPATH=/home/tgenref/pipeline_v0.4/bin/snpEff/snpEff_3.5h

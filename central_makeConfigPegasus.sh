@@ -67,14 +67,14 @@ do #for all of the files in conversion area
 	#genome normal section
 	if [ "$genNor" == "Ready" ] ; then
 		#genNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $5}' | head -1`
-		genNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $5}' | sort | uniq | xargs`
+		genNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		echo "### gen nor sample name: $genNorSampleName"
 	fi
 
 	#genome tumor  section
 	if [ "$genTum" == "Ready" ] ; then
 		#genTumSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Tumor" {print $5}' | head -1`
-		genTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Tumor" {print $5}' | sort | uniq | xargs`
+		genTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Tumor" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		echo "### gen tum sample name: $genTumSampleName"
 	fi
 	#print out genome pairs
@@ -95,14 +95,14 @@ do #for all of the files in conversion area
 	#exome normal section
 	if [ "$exoNor" == "Ready" ] ; then
 		#exoNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $5}' | head -1`
-		exoNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $5}' | sort | uniq | xargs`
+		exoNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		#echo "### exo nor sample name: $exoNorSampleName"
 	fi
 
 	#exome tumor  section
 	if [ "$exoTum" == "Ready" ] ; then
 		#exoTumSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Tumor" {print $5}' | head -1`
-		exoTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Tumor" {print $5}' | sort | uniq | xargs`
+		exoTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Tumor" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
 	fi
 	#print out exome pairs
 	if [[ "$exoTum" == "Ready" &&  "$exoNor" == "Ready" ]] ; then
@@ -123,14 +123,14 @@ do #for all of the files in conversion area
 	#RNA normal section
 	if [ "$rnaNor" == "Ready" ] ; then
 		#rnaNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Constitutional" {print $5}' | head -1`
-		rnaNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Constitutional" {print $5}' | sort | uniq | xargs`
+		rnaNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Constitutional" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		#echo "### rna nor sample name: $rnaNorSampleName"
 	fi
 
 	#RNA tumor  section
 	if [ "$rnaTum" == "Ready" ] ; then
 		#rnaTumSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Tumor" {print $5}' | head -1`
-		rnaTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Tumor" {print $5}' | sort | uniq | xargs`
+		rnaTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Tumor" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		#echo "### rna tum sample name: $rnaTumSampleName"
 	fi
 	#print out RNA pairs
