@@ -49,6 +49,7 @@ do
 	
         if [ -e $pedFile ] ; then
                 echo "###PED file found $pedFile"
+		echo "Copying PED file to $projDir"
         	cp $pedFile $projDir/$proj.ped 
 		mv $pedFile $dbUsed
 	else

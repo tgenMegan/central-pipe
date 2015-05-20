@@ -17,7 +17,7 @@ time=`date +%d-%m-%Y-%H-%M`
 echo "Starting $0 at $time"
 echo ""
 dropDir="/scratch/mrussell/centralPipe/dropBox/"
-famDropDir="/scratch/mrussell/centralPipe/famDropBox/"
+#famDropDir="/scratch/mrussell/centralPipe/famDropBox/"
 dbGood="/scratch/mrussell/centralPipe/dbGood/"
 dbFail="/scratch/mrussell/centralPipe/dbFail/"
 dbUsed="/scratch/mrussell/centralPipe/dbUsed/"
@@ -27,8 +27,7 @@ targetTopDir="/scratch/mrussell/centralPipe/runFolders/"
 conflicts="/scratch/mrussell/centralPipe/conflicts/"
 mergeSheetDir="/scratch/mrussell/centralPipe/mergeInfo/"
 
-for configFile in `find $dropDir $famDropDir \( -name "*config" ! -name ".*" \)`
-#for (( configFile in `find $dropDir \( -name "*config" ! -name ".*" \)` && configFile in `find $famDropDir \( -name "*config" ! -name ".*" \)` ))
+for configFile in `find $dropDir \( -name "*config" ! -name ".*" \)`
 do
 	validateFails=0
 	echo "### Found config file: $configFile"

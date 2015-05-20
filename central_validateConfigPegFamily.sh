@@ -26,7 +26,7 @@ targetTopDir="/scratch/mrussell/centralPipe/runFolders/"
 conflicts="/scratch/mrussell/centralPipe/conflicts/"
 mergeSheetDir="/scratch/mrussell/centralPipe/mergeInfo/"
 
-for configFile in `find $dropDir $famDropDir \( -name "*config" ! -name ".*" \)`
+for configFile in `find $dropDir \( -name "*config" ! -name ".*" \)`
 #for (( configFile in `find $dropDir \( -name "*config" ! -name ".*" \)` && configFile in `find $famDropDir \( -name "*config" ! -name ".*" \)` ))
 do
 	validateFails=0

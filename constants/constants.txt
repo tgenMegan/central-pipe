@@ -862,6 +862,10 @@
 @@tgen05@@KHSKI_B=/home/tgenref/pecan/annotations/exome_capture/agilent_kinome/Agilent_Kinome_hs37d5_Baits_Picard.txt
 @@tgen05@@A1STL_T=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
 @@tgen05@@A1STL_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
+@@tgen05@@KHSL2_T=/home/tgenref/pecan/annotations/exome_capture/strexome_lite_v2/Strexome_LiteV2_Baits.txt
+@@tgen05@@KHSL2_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite_v2/Strexome_LiteV2_Targets.txt
+@@tgen05@@KHSTL_T=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
+@@tgen05@@KHSTL_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
 @@tgen05@@KHSCR_T=/home/tgenref/pecan/annotations/exome_capture/agilent_clinical_research_exome/Agilent_Clinical_Research_Exome_hs37d5_Targets_Picard.txt
 @@tgen05@@KHSCR_B=/home/tgenref/pecan/annotations/exome_capture/agilent_clinical_research_exome/Agilent_Clinical_Research_Exome_hs37d5_Baits_Picard.txt
 @@tgen05@@KPSCR_T=/home/tgenref/pecan/annotations/exome_capture/agilent_clinical_research_exome/Agilent_Clinical_Research_Exome_hs37d5_Targets_Picard.txt
@@ -869,6 +873,8 @@
 @@tgen05@@A1S2X_T=/home/tgenref/pipeline_v0.4/annotations/exome_capture/Agilent_V2_hs37d5/Agilent_V2_hs37d5_Targets_Picard.txt
 @@tgen05@@A1S2X_B=/home/tgenref/pipeline_v0.4/annotations/exome_capture/Agilent_V2_hs37d5/Agilent_V2_hs37d5_Baits_Picard.txt
 @@tgen05@@A1S2X_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
+@@tgen05@@KHSL2_CNABED=/home/tgenref/pecan/cna/strexome_liteV2_cna.bed
+@@tgen05@@KHSTL_CNABED=/home/tgenref/pipeline_v0.4/cna/strexome_lite.cna.bed
 @@tgen05@@A1STX_CNABED=/home/tgenref/pipeline_v0.4/cna/strexome.cna.bed
 @@tgen05@@KPSTX_CNABED=/home/tgenref/pipeline_v0.4/cna/strexome.cna.bed
 @@tgen05@@KHSCR_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
@@ -879,6 +885,7 @@
 @@tgen05@@TSE61_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@KAE62_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@KBS5U_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
+@@tgen05@@A1S5U_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@KHS5U_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@KAS5U_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@A2S4X_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
@@ -1422,8 +1429,10 @@
 @@tgen06@@MUTECTPATH=/home/tgenref/pipeline_v0.4/bin/mutect
 @@tgen06@@SUMSTATSPATH=/home/tgenref/pecan/bin/summaryStats
 @@tgen06@@PICARDPATH=/packages/picard-tools/1.128
+@@tgen06@@VTPATH=/home/tgenref/pecan/bin/vt
 @@tgen06@@PROCESSCDLISTPATH=/home/tgenref/pipeline_v0.3/bin
 @@tgen06@@SAMTOOLSPATH=/packages/samtools/1.2
+@@tgen06@@BCFTOOLSPATH=/home/tgenref/pecan/bin/bcftools-1.2/bin
 @@tgen06@@STARPATH=/home/tgenref/pecan/bin/STAR-STAR_2.4.0k/bin/Linux_x86_64
 @@tgen06@@SEURATPATH=/home/tgenref/pipeline_v0.4/bin
 @@tgen06@@SNPEFFPATH=/home/tgenref/pipeline_v0.4/bin/snpEff/snpEff_3.5h
@@ -1460,6 +1469,7 @@
 @@tgen06@@OMNI=/home/tgenref/pipeline_v0.3/gatk_bundle_2.5/b37/1000G_omni2.5.b37.vcf
 @@tgen06@@COSMIC_VCF=/home/tgenref/pipeline_v0.4/annotations/CosmicCodingMuts_v68_ReOrdered.vcf
 @@tgen06@@CHRLIST=/home/tgenref/pipeline_v0.4/chrList/dir2
+@@tgen06@@CHRBED=/home/tgenref/pipeline_v0.4/chrListBED/dir2
 @@tgen06@@SNPEFFDB=GRCh37.74
 @@tgen06@@REFFLAT=/home/tgenref/pecan/ensembl_v74/Homo_sapiens.GRCh37.74_hs37d5_EGFRvIII_Reflat_Picard.txt
 @@tgen06@@RIBINTS=/home/tgenref/pecan/ensembl_v74/Homo_sapiens.GRCh37.74_hs37d5_EGFRvIII_Ribosomal_Locations_Picard.txt

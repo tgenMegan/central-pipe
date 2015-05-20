@@ -76,7 +76,7 @@ do #for all of the files in conversion area
 	#genome normal section
 	if [ "$genNor" == "Ready" ] ; then
 		#genNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $5}' | head -1`
-		genNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
+		genNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Constitutional" {print $6}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		echo "### gen nor sample name: $genNorSampleName"
                 genJirSetName="${PROJECT}_Genome_DNAFAMI"
                 genJirSet=`echo "${genNorSampleList// /,};${genJirSetName}"`
@@ -86,7 +86,7 @@ do #for all of the files in conversion area
 	#genome tumor  section
 	if [ "$genTum" == "Ready" ] ; then
 		#genTumSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Tumor" {print $5}' | head -1`
-		genTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Tumor" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
+		genTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Genome" && $9=="Tumor" {print $6}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		echo "### gen tum sample name: $genTumSampleName"
 	fi
 	#print out genome pairs
@@ -107,7 +107,7 @@ do #for all of the files in conversion area
 	#exome normal section
 	if [ "$exoNor" == "Ready" ] ; then
 		#exoNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $5}' | head -1`
-		exoNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
+		exoNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Constitutional" {print $6}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		#echo "### exo nor sample name: $exoNorSampleName"
                 exoJirSetName="${PROJECT}_Exome_DNAFAMI"
                 exoJirSet=`echo "${exoNorSampleList// /,};${exoJirSetName}"`
@@ -118,7 +118,7 @@ do #for all of the files in conversion area
 	#exome tumor  section
 	if [ "$exoTum" == "Ready" ] ; then
 		#exoTumSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Tumor" {print $5}' | head -1`
-		exoTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Tumor" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
+		exoTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="Exome" && $9=="Tumor" {print $6}' | cut -d_ -f1-7 | sort | uniq | xargs`
 	fi
 	#print out exome pairs
 	if [[ "$exoTum" == "Ready" &&  "$exoNor" == "Ready" ]] ; then
@@ -139,14 +139,14 @@ do #for all of the files in conversion area
 	#RNA normal section
 	if [ "$rnaNor" == "Ready" ] ; then
 		#rnaNorSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Constitutional" {print $5}' | head -1`
-		rnaNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Constitutional" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
+		rnaNorSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Constitutional" {print $6}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		#echo "### rna nor sample name: $rnaNorSampleName"
 	fi
 
 	#RNA tumor  section
 	if [ "$rnaTum" == "Ready" ] ; then
 		#rnaTumSampleName=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Tumor" {print $5}' | head -1`
-		rnaTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Tumor" {print $5}' | cut -d_ -f1-7 | sort | uniq | xargs`
+		rnaTumSampleList=`cat $fqList | awk 'BEGIN{FS=","} $7=="RNA" && $9=="Tumor" {print $6}' | cut -d_ -f1-7 | sort | uniq | xargs`
 		#echo "### rna tum sample name: $rnaTumSampleName"
 	fi
 	#print out RNA pairs
@@ -190,22 +190,23 @@ do #for all of the files in conversion area
 	fi
 		
 	echo "=START" >> ${CA}/$projName.config
-	for eachSample in `cat $fqList | awk 'BEGIN{FS=","} {print $5}' | sort | uniq`
+	for eachSample in `cat $fqList | awk 'BEGIN{FS=","} {print $6}' | sort | uniq`
 	do
 		eachSampleName=`echo ${eachSample} | cut -d_ -f1-7`
-		kitName=`cat $fqList | awk 'BEGIN{FS=","} $5=="'"$eachSample"'"  {print $4}' | head -1`
-		assayID=`cat $fqList | awk 'BEGIN{FS=","} $5=="'"$eachSample"'"  {print $7}' | head -1`
+		kitName=`cat $fqList | awk 'BEGIN{FS=","} $6=="'"$eachSample"'"  {print $4}' | head -1`
+		assayID=`cat $fqList | awk 'BEGIN{FS=","} $6=="'"$eachSample"'"  {print $7}' | head -1`
 		#libraID=`cat $fqList | awk 'BEGIN{FS=","} $5=="'"$eachSample"'"  {print $8}' | head -1`
 		#echo "SAMPLE=$kitName,$eachSample,$assayID,$libraID" >> ${CA}/$projName.config
 		echo "SAMPLE=$kitName,$eachSampleName,$assayID" >> ${CA}/$projName.config
-		for eachRead in `cat $fqList | awk 'BEGIN{FS=","} $5=="'"$eachSample"'" {print $1"_"$8","$2}'`
+		for eachRead in `cat $fqList | awk 'BEGIN{FS=","} $6=="'"$eachSample"'" {print $1"_"$8","$2}'`
 		do
 			echo "FQ=$eachRead""_R1_001.fastq.gz" >> ${CA}/$projName.config
 		done
 	done
 	echo "=END" >> ${CA}/$projName.config
 	mv ${CA}/$projName.config ${FDB}/
-	cp $pedFile $projName.ped
+	awk '!x[$0]++' $pedFile > $projName.ped
+	#cp $pedFile $projName.ped
 	mv $projName.ped ${FDB}/
 	mv $fqList ${CAU}
 	mv $runPar ${CAU}

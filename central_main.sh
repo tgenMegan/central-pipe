@@ -19,12 +19,16 @@ logs="/scratch/mrussell/centralPipe/logs"
 topProjDir="/scratch/mrussell/centralPipe/projects"
 myhostname=`hostname`
 CA="/scratch/mrussell/centralPipe/conversionArea"
-
+FCA="/scratch/mrussell/centralPipe/familyConversionArea"
         
 echo "### ~~Running on $myhostname~~"
 
 echo "### Sending validate config into dropBox..."
 $scriptsHome/central_validateConfig.sh >> $logs/central_validateConfigLOG.txt 2>&1
+echo "### End of validate config checking out dropBox..."
+
+echo "### Sending validate config into dropBox..."
+$scriptsHome/central_validateConfigPegFamily.sh >> $logs/central_validateFamilyConfigLOG.txt 2>&1
 echo "### End of validate config checking out dropBox..."
 
 echo "### Sending prepDirs into dbGood..."
@@ -34,6 +38,19 @@ echo "### End of prepDir checking out dbGood..."
 echo "### Sending makeConfig into conversion area..."
 
 #$scriptsHome/central_makeConfigPegasus.sh >> $logs/central_makeConfigLOG.txt 2>&1
+
+for fqList in `find ${FCA} -name *FastqList.csv`
+do
+	runPar=${fqList/FastqList.csv/RunParameters.csv}
+        if [ ! -e $runPar ] ; then
+                echo "RunParameters.csv file doesn't exist"
+                continue
+        else
+		$scriptsHome/central_makeConfigPegFamily.sh >> $logs/central_makeConfigFAMLOG.txt 2>&1
+	fi
+	
+
+done
 
 for fqList in `find ${CA} -name *FastqList.csv`
 do #for all of the files in conversion area
