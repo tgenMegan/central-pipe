@@ -167,7 +167,7 @@ do
 		if [[ "$fileName" == *"TSMRU"*  && "$fileName" != *"$rnaCase"* && "$fileName" != *"deseq.vcf"* && "$fileName" != *"cuffdiff.vcf"* ]]; then
 			echo "Skipping RNA Control"		
 		else
-			if [[ "$fileName" == *"HC_All.vcf"* ]]; then
+			if [[ "$fileName" == *"HC_All.snpEff.vcf"* ]]; then
 				file1=`echo $fileName | cut -d'.' -f1` ## | read file1
 				echo "**********  $file1"
 				file2=`echo $file1 | cut -d'-' -f1`
@@ -183,7 +183,6 @@ do
 			elif [[ "$fileName" == *"$rnaTag"* && "$fileName" == *"deseq.vcf"* ]]; then
                                 #file1=`echo $fileName | cut -d'.' -f1` ## | read file1
                                  file2=$rnaCase #`echo $file1 | awk -F'-VS-' '{print $2}'`
-=cut
 			elif [[ "$fileName" == *"deseq.vcf"* || "$fileName" == *"cuffdiff.vcf"* ]]; then
 #                                        file1=`echo $fileName | cut -d'.' -f1` ## | read file1
 #                                        echo "**************** $file1 "

@@ -770,6 +770,7 @@
 @@tgen05@@STARREF125=/home/tgenref/pecan/star_index/124bpOverHang
 @@tgen05@@STARREF112=/home/tgenref/pecan/star_index/111bpOverHang
 @@tgen05@@STARREF109=/home/tgenref/pecan/star_index/108bpOverHang
+@@tgen05@@STARREF108=/home/tgenref/pecan/star_index/107bpOverHang
 @@tgen05@@STARREF107=/home/tgenref/pecan/star_index/106bpOverHang
 @@tgen05@@STARREF101=/home/tgenref/pecan/star_index/100bpOverHang
 @@tgen05@@STARREF100=/home/tgenref/pecan/star_index/099bpOverHang
