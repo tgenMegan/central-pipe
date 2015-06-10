@@ -862,11 +862,11 @@
 @@tgen05@@KHSKI_T=/home/tgenref/pecan/annotations/exome_capture/agilent_kinome/Agilent_Kinome_hs37d5_Targets_Picard.txt
 @@tgen05@@KHSKI_B=/home/tgenref/pecan/annotations/exome_capture/agilent_kinome/Agilent_Kinome_hs37d5_Baits_Picard.txt
 @@tgen05@@A1STL_T=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
-@@tgen05@@A1STL_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
-@@tgen05@@KHSL2_T=/home/tgenref/pecan/annotations/exome_capture/strexome_lite_v2/Strexome_LiteV2_Baits.txt
-@@tgen05@@KHSL2_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite_v2/Strexome_LiteV2_Targets.txt
+@@tgen05@@A1STL_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Baits.txt
+@@tgen05@@KHSL2_T=/home/tgenref/pecan/annotations/exome_capture/strexome_lite_v2/Strexome_LiteV2_Targets.txt
+@@tgen05@@KHSL2_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite_v2/Strexome_LiteV2_Baits.txt
 @@tgen05@@KHSTL_T=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
-@@tgen05@@KHSTL_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Targets.txt
+@@tgen05@@KHSTL_B=/home/tgenref/pecan/annotations/exome_capture/strexome_lite/Strexome_Lite_Baits.txt
 @@tgen05@@KHSCR_T=/home/tgenref/pecan/annotations/exome_capture/agilent_clinical_research_exome/Agilent_Clinical_Research_Exome_hs37d5_Targets_Picard.txt
 @@tgen05@@KHSCR_B=/home/tgenref/pecan/annotations/exome_capture/agilent_clinical_research_exome/Agilent_Clinical_Research_Exome_hs37d5_Baits_Picard.txt
 @@tgen05@@KPSCR_T=/home/tgenref/pecan/annotations/exome_capture/agilent_clinical_research_exome/Agilent_Clinical_Research_Exome_hs37d5_Targets_Picard.txt
@@ -1429,6 +1429,7 @@
 @@tgen06@@GATKPATH=/home/tgenref/pecan/bin/GATK3.3.0
 @@tgen06@@MUTECTPATH=/home/tgenref/pipeline_v0.4/bin/mutect
 @@tgen06@@SUMSTATSPATH=/home/tgenref/pecan/bin/summaryStats
+@@tgen06@@DENOVOGEARPATH=/packages/denovogear/0.5.4/bin/
 @@tgen06@@PICARDPATH=/packages/picard-tools/1.128
 @@tgen06@@VTPATH=/home/tgenref/pecan/bin/vt
 @@tgen06@@PROCESSCDLISTPATH=/home/tgenref/pipeline_v0.3/bin

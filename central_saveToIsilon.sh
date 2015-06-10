@@ -64,6 +64,23 @@ recipe=`cat $configFile | grep "^RECIPE=" | cut -d= -f2 | head -1 | tr -d [:spac
 debit=`cat $configFile | grep "^DEBIT=" | cut -d= -f2 | head -1 | tr -d [:space:]`
 saveSimple=`cat $configFile | grep "^SAVESIMPLE=" | cut -d= -f2 | head -1 | tr -d [:space:]`
 
+###CHECKS for 0 byte files
+zeroVcfs=`find $runDir -maxdepth 6 -name *final.vcf -size 0`
+zeroBais=`find $runDir -maxdepth 6 -name *final.bai -size 0`
+zeroBams=`find $runDir -maxdepth 6 -name *final.bam -size 0`
+if [ -z $zeroVcfs ] ; then
+	echo "Yay no zero size vcfs"
+else
+	echo "A zero size vcf(s), bam(s), or bai(s) was found, please evaluate"
+	echo "Zero vcf: $zeroVcfs"
+	echo "Zero bam: $zeroBams"
+	echo "Zero bai: $zeroBais"
+	echo "There was a zero byte file found for $projName. Zero size file(s) are: $zeroVcfs, $zeroBams, $zeroBais" >> ~/mailtmp-$$.txt
+        cat ~/mailtmp-$$.txt | mail -s "central pipeline ERROR: your project $projName has an ERROR" "mrussell@tgen.org"
+	mv ~/mailtmp-$$.txt $runDir/error.sent
+	exit
+fi
+
 if echo $saveSimple | grep -iq yes  ; then
 	echo "SAVESIMPLE $saveSimple is going to run"
 else
