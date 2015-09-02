@@ -136,23 +136,6 @@ do
 		echo "### Results dir needs to be set $results" >> $conflicts/$configName.configErrors
 		validateFails=1
 	fi
-
-	### validate recipe name
-	recipe=`cat $configFile | grep "^RECIPE=" | cut -d= -f2 | head -1 | tr -d [:space:]`
-	if [[ -z "$recipe" ]] ; then
-		echo "### Recipe name needs to be set $recipe"
-		echo "### Recipe name needs to be set $recipe" >> $conflicts/$configName.configErrors
-		validateFails=1
-	else
-		grep -w "^$recipe" /home/mrussell/central-pipe/constants/validRecipes.txt > /dev/null
-		if [ $? -eq 0 ] ; then
-			echo "### Recipe $recipe found."
-		else
-			echo "### Recipe $recipe is not a valid recipe!!!"
-			echo "### Recipe $recipe is not a valid recipe!!!" >> $conflicts/$configName.configErrors
-			validateFails=1
-		fi
-	fi
 	### validate pipeline name
         pipeline=`cat $configFile | grep "^PIPELINE=" | cut -d= -f2 | head -1 | tr -d [:space:]`
         if [[ -z "$pipeline" ]] ; then
@@ -169,6 +152,24 @@ do
                         validateFails=1
                 fi
         fi
+
+	### validate recipe name
+	recipe=`cat $configFile | grep "^RECIPE=" | cut -d= -f2 | head -1 | tr -d [:space:]`
+	if [[ -z "$recipe" ]] ; then
+		echo "### Recipe name needs to be set $recipe"
+		echo "### Recipe name needs to be set $recipe" >> $conflicts/$configName.configErrors
+		validateFails=1
+	else
+		grep -w "^$recipe" /home/mrussell/central-pipe/constants/valid${pipeline}Recipes.txt > /dev/null
+		if [ $? -eq 0 ] ; then
+			echo "### Recipe $recipe found for $pipeline."
+		else
+			echo "### Recipe $recipe is not a valid $pipeline recipe!!!"
+			echo "### Recipe $recipe is not a valid $pipeline recipe!!!" >> $conflicts/$configName.configErrors
+			validateFails=1
+		fi
+	fi
+
 	### validate save recipe 
 	saveRecipe=`cat $configFile | grep "^SAVERECIPE=" | cut -d= -f2 | head -1 | tr -d [:space:]`
 	if [[ -z "$saveRecipe" ]] ; then

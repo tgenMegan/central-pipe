@@ -53,10 +53,7 @@ do
 
 	echo "### Copying config file to $projDir"
 	cp $configFile $projDir/$proj.config
-	echo "### Done with config file: $configFile"
-        echo "### Moving config file to dbUsed"
-        mv $configFile $dbUsed
-	configFile=$projDir/$proj.config	
+
 	### create dir with kit name, sample name
 	skipLines=1
 	count=0
@@ -80,10 +77,6 @@ do
 					### Copying ###
 					targetName=$targetTopDir/$proj$timeExt/$kitName/$samName/$samName.proj.md.jr.bam
 					targetBai=$targetTopDir/$proj$timeExt/$kitName/$samName/$samName.proj.md.jr.bai
-					mdName=$targetTopDir/$proj$timeExt/$kitName/$samName/$samName.proj.md.bam
-					mdBai=$targetTopDir/$proj$timeExt/$kitName/$samName/$samName.proj.md.bai
-					mdPassName=$targetTopDir/$proj$timeExt/$kitName/$samName/$samName.proj.bam.mdPass
-					
 					thisBam=`echo ${mergeArray[$i]} | cut -d= -f2 | cut -d, -f2`
 					wantedBai=${thisBam/.bam/.bai}
 
@@ -106,10 +99,6 @@ do
 							else
 								touch $targetName.cpBamFail
 							fi
-				#### Adding this in so that samstats and picard metrics can run on these samples
-							ln -s $targetName $mdName
-							ln -s $targetBai $mdBai
-							touch $mdPassName
 							rm -f $targetName.cpBamInQueue
 							touch $targetName.jointIRPass
 					#	else #must be no, not copying, just linking
@@ -218,10 +207,10 @@ do
 	touch ${projDir}/${msg9}
 	touch ${projDir}/${msg10}
 
-	#echo "### Done with config file: $configFile"
-	#echo "### Moving config file to dbUsed"
-	#mv $configFile $dbUsed
-	#echo ""
+	echo "### Done with config file: $configFile"
+	echo "### Moving config file to dbUsed"
+	mv $configFile $dbUsed
+	echo ""
 done
 time=`date +%d-%m-%Y-%H-%M`
 echo "Ended $0 at $time"

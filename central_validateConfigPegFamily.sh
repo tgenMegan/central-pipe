@@ -154,12 +154,12 @@ do
 		echo "### Recipe name needs to be set $recipe" >> $conflicts/$configName.configErrors
 		validateFails=1
 	else
-		grep -w "^$recipe" /home/mrussell/central-pipe/constants/validRecipes.txt > /dev/null
+		grep -w "^$recipe" /home/mrussell/central-pipe/constants/valid${pipeline}Recipes.txt > /dev/null
 		if [ $? -eq 0 ] ; then
 			echo "### Recipe $recipe found."
 		else
-			echo "### Recipe $recipe is not a valid recipe!!!"
-			echo "### Recipe $recipe is not a valid recipe!!!" >> $conflicts/$configName.configErrors
+			echo "### Recipe $recipe is not a valid $pipeline recipe!!!"
+			echo "### Recipe $recipe is not a valid $pipeline recipe!!!" >> $conflicts/$configName.configErrors
 			validateFails=1
 		fi
 	fi

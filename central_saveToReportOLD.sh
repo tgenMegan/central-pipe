@@ -148,8 +148,8 @@ echo "### Copy process started at $time" > $targetDir/reportCopyStarted.txt
 
 #saveRecipe=default
 echo "### Save recipe is $saveRecipe"
-extensions=`cat /home/mrussell/central-pipe/constants/saveReports.txt  | grep "^$saveRecipe=" | cut -d= -f2 | head -1 | tr -d [:space:]`
-#extensions=`cat /home/snasser/scripts/pipeline/saveReports.txt  | grep "^$saveRecipe=" | cut -d= -f2 | head -1 | tr -d [:space:]`
+#extensions=`cat /home/mrussell/central-pipe/constants/saveReports.txt  | grep "^$saveRecipe=" | cut -d= -f2 | head -1 | tr -d [:space:]`
+extensions=`cat /home/snasser/scripts/pipeline/saveReports.txt  | grep "^$saveRecipe=" | cut -d= -f2 | head -1 | tr -d [:space:]`
 echo "### Extensions to copy are $extensions"
 fails=0
 
@@ -194,7 +194,7 @@ do
 				if [[ "$fileName" != *"REVseurat.snpEff.vcf"* ]]; then
 					file1=`echo $fileName | cut -d'.' -f1` ## | read file1
 					file2=`echo $file1 | cut -d'-' -f2`
-				fi	
+				fi
 			fi
 			echo "********** $file2"
 			###skip study and sample
@@ -203,7 +203,7 @@ do
 			pr3=`echo $file2 | cut -d'_' -f7`
 
 			echo "******* $pr1 $pr2 $pr3 **********"
-			#targetPath="$targetDir/$sample/$pr1/$pr2/$pr3/$base/$fileName";
+			#targetPath="$targetDir/$sample/$pr1/$pr2/$pr3/$base/$fileName";	
 			targetPath="$targetDir/$pr1/$pr2/$pr3/$base/$fileName";	
 			###END OF ADDITION FOR VCF2
 			targetBase=`dirname $targetPath`
@@ -216,18 +216,11 @@ do
 			fi
 			if [ ! -e $targetPath ] ; then
 				echo "### Copying $fileToSave to $targetPath"
-				if [[ [ "$saveRecipe" == *"SU2C"* || "$saveRecipe" == *"PNOC"* ] && "$fileToSave" == *"merged.canonicalOnly.rna.final.vcf"* ]]; then
-                                	file3=`echo $fileName | cut -d'.' -f1`
-                                	seuratFromMerged="$file3.merged.canonicalOnly.rna.final.seurat.vcf";
-                                	echo "********* Seurat Only File from Merged $seuratFromMerged ****************"
-					grep "^#\|SEURAT" $fileToSave > $targetBase/$seuratFromMerged
-				else
-					rsync -tlu $fileToSave $targetPath
-				fi
+				rsync -tlu $fileToSave $targetPath
 				if [ $? -ne 0 ] ; then
 					echo "### Failed to copy to $targetPath"
 					rm -f $targetPath
-					fail=1
+					fails=1
 				fi
 			else
 				echo "### Already exists: $targetPath/$fileName"
