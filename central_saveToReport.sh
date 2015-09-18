@@ -216,7 +216,7 @@ do
 			fi
 			if [ ! -e $targetPath ] ; then
 				echo "### Copying $fileToSave to $targetPath"
-				if [[ [ "$saveRecipe" == *"SU2C"* || "$saveRecipe" == *"PNOC"* ] && "$fileToSave" == *"merged.canonicalOnly.rna.final.vcf"* ]]; then
+				if [[ "$saveRecipe" == *"SU2C"* || "$saveRecipe" == *"PNOC"* ]] && [[ "$fileToSave" == *"merged.canonicalOnly.rna.final.vcf"* ]]; then
                                 	file3=`echo $fileName | cut -d'.' -f1`
                                 	seuratFromMerged="$file3.merged.canonicalOnly.rna.final.seurat.vcf";
                                 	echo "********* Seurat Only File from Merged $seuratFromMerged ****************"

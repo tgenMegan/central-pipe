@@ -847,6 +847,8 @@
 @@tgen05@@KHS5U_B=/home/tgenref/pecan/annotations/exome_capture/agilent_v5_plusUTR/Agilent_V5_PlusUTR_hs37d5_Baits_Picard.txt
 @@tgen05@@KBS5X_T=/home/tgenref/pecan/annotations/exome_capture/agilent_v5_noUTR/Agilent_V5_NoUTR_hs37d5_Targets_Picard.txt
 @@tgen05@@KBS5X_B=/home/tgenref/pecan/annotations/exome_capture/agilent_v5_noUTR/Agilent_V5_NoUTR_hs37d5_Baits_Picard.txt
+@@tgen05@@KAS5X_T=/home/tgenref/pecan/annotations/exome_capture/agilent_v5_noUTR/Agilent_V5_NoUTR_hs37d5_Targets_Picard.txt
+@@tgen05@@KAS5X_B=/home/tgenref/pecan/annotations/exome_capture/agilent_v5_noUTR/Agilent_V5_NoUTR_hs37d5_Baits_Picard.txt
 @@tgen05@@KBS5U_T=/home/tgenref/pecan/annotations/exome_capture/agilent_v5_plusUTR/Agilent_V5_PlusUTR_hs37d5_Targets_Picard.txt
 @@tgen05@@KBS5U_B=/home/tgenref/pecan/annotations/exome_capture/agilent_v5_plusUTR/Agilent_V5_PlusUTR_hs37d5_Baits_Picard.txt
 @@tgen05@@A1S4U_T=/home/tgenref/pecan/annotations/exome_capture/agilent_v4_plusUTR/Agilent_V4_PlusUTR_hs37d5_Targets_Picard.txt
@@ -918,6 +920,7 @@
 @@tgen05@@AHS1X_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@A1S5X_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@KHS5X_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
+@@tgen05@@KAS5X_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@KHSKI_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@KBS5X_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
 @@tgen05@@NTE62_CNABED=/home/tgenref/pipeline_v0.4/cna/exome.overlap.bed
